@@ -1,24 +1,12 @@
-"use client";
+"use client"
 import { useState } from "react";
 
-// react icons
 import { IoIosSearch } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const Navbar = () => {
     const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
-    const router = useRouter()
-
-    const links = [
-        { name: "home", path: "/" },
-        {name: 'about', path: "/about"},
-        {name: 'services', path: "/services"},
-        {name: 'contact', path: "/contact"},
-    ]
-
-
 
     return (
         <nav
@@ -30,16 +18,19 @@ const Navbar = () => {
             {/* nav links */}
             <ul className="items-center gap-[20px] text-[1rem] text-[#424242] md:flex hidden">
 
-                {links.map((link, index) => ( <Link href={link.path} key={index} className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer capitalize">{link.name}</Link>))}
+                <Link href='/' className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer capitalize">home</Link>
+
+                <Link href='/products' className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer capitalize">Products</Link>
+
+                <Link href='/blogs' className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer capitalize">Blogs</Link>
             </ul>
 
             {/* action buttons */}
             <div className="items-center gap-[10px] flex">
-                <button
-                onClick={() => router.push("/signin")}
-className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize hover:text-[#3B9DF8] transition-all duration-300 sm:flex hidden">Sign
+                <Link href='/signin'
+                    className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize hover:text-[#3B9DF8] transition-all duration-300 sm:flex hidden">Sign
                     in
-                </button>
+                </Link>
                 <button
                     className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-[#3B9DF8] text-white hover:bg-blue-400 transition-all duration-300 sm:flex hidden">Sign
                     up
@@ -61,13 +52,11 @@ className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize hover:text-[#3
                 </div>
                 <ul className="items-center gap-[20px] text-[1rem] text-gray-600 flex flex-col">
 
-                    <li className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer capitalize">home</li>
+                    <Link href='/' className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer capitalize">home</Link>
 
-                    {
-                        links.map((link, index) => (
-                            <Link href={link.path} key={index} className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer capitalize">{link.name}</Link>
-                        ))
-                    }
+                    <Link href='/products' className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer capitalize">Products</Link>
+
+                    <Link href='/blogs' className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer capitalize">Blogs</Link>
 
                 </ul>
             </aside>
