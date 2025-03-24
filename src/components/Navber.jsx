@@ -4,9 +4,12 @@ import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
     const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
+    const session = useSession();
+    console.log(session);
 
     return (
         <nav
@@ -27,14 +30,21 @@ const Navbar = () => {
 
             {/* action buttons */}
             <div className="items-center gap-[10px] flex">
-                <Link href='/signin'
-                    className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize hover:text-[#3B9DF8] transition-all duration-300 sm:flex hidden">Sign
-                    in
-                </Link>
-                <button
+                {
+                    session.status === "authenticated" ? (
+                        <button
+                            onClick={() => signOut()}
+                            className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize text-white bg-[#3B9DF8] hover:bg-blue-400 transition-all duration-300">Logout</button>
+                    ) : (
+                        <Link href='/api/auth/signin'>
+                            <button className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize text-white bg-[#3B9DF8] hover:bg-blue-400 transition-all duration-300">Login</button>
+                        </Link>
+                    )
+                }
+                <Link href='/api/auth/signup'
                     className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-[#3B9DF8] text-white hover:bg-blue-400 transition-all duration-300 sm:flex hidden">Sign
                     up
-                </button>
+                </Link>
 
                 <CiMenuFries
                     className="text-[1.8rem] mr-1 text-[#424242]c cursor-pointer md:hidden flex"

@@ -6,9 +6,7 @@ const getDetailsProducts = async (id) => {
 }
 
 const productDetails = async ({ params }) => {
-    console.log(params.id);
     const product = await getDetailsProducts(params.id);
-    console.log(product);
     return (
         <div className="container mx-auto p-6 flex flex-col md:flex-row items-center gap-8">
             <div className="w-full md:w-1/2">

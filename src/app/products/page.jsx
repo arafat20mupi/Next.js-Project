@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const fetchProducts = async () => {
@@ -6,9 +7,8 @@ const fetchProducts = async () => {
   return data;
 };
 
-const Products = async() => {
-const allProducts =await fetchProducts();
-console.log(allProducts);
+const Products = async () => {
+  const allProducts = await fetchProducts();
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-4xl font-bold text-center text-gray-800 my-6">
@@ -16,15 +16,11 @@ console.log(allProducts);
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {allProducts.products.map((product) => (
-          <Link href={`/products/${product.id}`} 
+          <Link href={`/products/${product.id}`}
             key={product.id}
             className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition duration-300"
           >
-            <img
-              className="w-80 h-56 object-cover"
-              src={product.thumbnail}
-              alt={product.title}
-            />
+            <Image src={product.thumbnail} alt={product.title} width={320} height={200} />
             <div className="p-4">
               <h2 className="text-lg font-semibold text-gray-700">
                 {product.title}

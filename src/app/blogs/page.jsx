@@ -1,4 +1,7 @@
-const Blogs = () => {
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+
+const Blogs =async () => {
     const blogs = [
         {
             "id": 1,
@@ -41,6 +44,7 @@ const Blogs = () => {
             "tags": ["customer", "ecommerce", "service"]
         }
     ];
+const session = await getServerSession(authOptions);
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-10">
